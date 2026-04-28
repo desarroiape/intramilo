@@ -16,1065 +16,550 @@
       --dark-4: #22222A;
       --text: #E8E6E0;
       --text-muted: #888880;
-      --hilton: #003580;
       --hilton-light: #0056CC;
-      --pandero: #8B1A1A;
       --pandero-light: #C0392B;
       --border: rgba(201,168,76,0.15);
     }
-
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
     html { scroll-behavior: smooth; }
-
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: var(--dark);
-      color: var(--text);
-      overflow-x: hidden;
-    }
-
-    /* ── NOISE OVERLAY ── */
+    body { font-family: 'DM Sans', sans-serif; background: var(--dark); color: var(--text); overflow-x: hidden; }
     body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
+      content: ''; position: fixed; inset: 0;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.4;
+      pointer-events: none; z-index: 0; opacity: 0.4;
     }
-
-    /* ── HEADER ── */
+    /* HEADER */
     header {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      padding: 1.2rem 3rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      background: rgba(10,10,11,0.85);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 1.2rem 3rem; display: flex; align-items: center; justify-content: space-between;
+      background: rgba(10,10,11,0.88); backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
     }
-
-    .header-logo {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.1rem;
-      font-weight: 300;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-    }
-
-    nav {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    nav a {
-      color: var(--text-muted);
-      text-decoration: none;
-      font-size: 0.78rem;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      transition: color 0.3s;
-    }
+    .header-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 300; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); }
+    nav { display: flex; gap: 2rem; align-items: center; }
+    nav a { color: var(--text-muted); text-decoration: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; transition: color 0.3s; cursor: pointer; }
     nav a:hover { color: var(--gold); }
-
-    .nav-dot {
-      width: 5px; height: 5px;
-      border-radius: 50%;
-      background: var(--border);
-    }
-
-    /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 8rem 2rem 4rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      background:
-        radial-gradient(ellipse 70% 50% at 20% 60%, rgba(0,53,128,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 60% 50% at 80% 40%, rgba(139,26,26,0.12) 0%, transparent 60%),
-        radial-gradient(ellipse 40% 40% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%);
-    }
-
-    .hero-line {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .hero-tag {
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      border: 1px solid var(--gold);
-      padding: 0.35rem 1rem;
-      opacity: 0;
-      animation: fadeUp 0.8s ease forwards 0.2s;
-    }
-
-    .hero h1 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(3rem, 8vw, 7rem);
-      font-weight: 300;
-      line-height: 0.95;
-      letter-spacing: -0.02em;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 0.4s;
-    }
-
-    .hero h1 em {
-      font-style: italic;
-      color: var(--gold);
-    }
-
-    .hero-sub {
-      margin-top: 2rem;
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 300;
-      letter-spacing: 0.05em;
-      max-width: 500px;
-      line-height: 1.7;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 0.6s;
-    }
-
-    .hero-divider {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      margin-top: 3rem;
-      opacity: 0;
-      animation: fadeUp 1s ease forwards 0.8s;
-    }
-
+    .nav-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--border); }
+    /* HERO */
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 8rem 2rem 4rem; position: relative; overflow: hidden; }
+    .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse 70% 50% at 20% 60%, rgba(0,53,128,0.12) 0%, transparent 60%), radial-gradient(ellipse 60% 50% at 80% 40%, rgba(139,26,26,0.12) 0%, transparent 60%), radial-gradient(ellipse 40% 40% at 50% 50%, rgba(201,168,76,0.04) 0%, transparent 70%); }
+    .hero-tag { font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 0.35rem 1rem; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 0.8s ease forwards 0.2s; }
+    .hero h1 { font-family: 'Cormorant Garamond', serif; font-size: clamp(3rem, 8vw, 7rem); font-weight: 300; line-height: 0.95; letter-spacing: -0.02em; opacity: 0; animation: fadeUp 1s ease forwards 0.4s; }
+    .hero h1 em { font-style: italic; color: var(--gold); }
+    .hero-sub { margin-top: 2rem; font-size: 0.95rem; color: var(--text-muted); font-weight: 300; letter-spacing: 0.05em; max-width: 520px; line-height: 1.7; opacity: 0; animation: fadeUp 1s ease forwards 0.6s; }
+    .hero-divider { display: flex; align-items: center; gap: 1rem; margin-top: 3rem; opacity: 0; animation: fadeUp 1s ease forwards 0.8s; }
     .hero-divider span { color: var(--text-muted); font-size: 0.75rem; letter-spacing: 0.15em; }
-    .hero-divider::before,
-    .hero-divider::after {
-      content: '';
-      width: 80px; height: 1px;
-      background: var(--border);
-    }
-
-    /* ── COMPANY SELECTOR ── */
-    .selector {
-      padding: 5rem 2rem 3rem;
-      display: flex;
-      gap: 1.5rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .company-card {
-      position: relative;
-      width: 280px;
-      padding: 2.5rem 2rem;
-      border: 1px solid var(--border);
-      background: var(--dark-2);
-      cursor: pointer;
-      transition: all 0.4s ease;
-      overflow: hidden;
-    }
-
-    .company-card::before {
-      content: '';
-      position: absolute;
-      bottom: 0; left: 0; right: 0;
-      height: 2px;
-      transform: scaleX(0);
-      transition: transform 0.4s ease;
-    }
-
+    .hero-divider::before, .hero-divider::after { content: ''; width: 80px; height: 1px; background: var(--border); }
+    /* SELECTOR */
+    .selector { padding: 5rem 2rem 3rem; display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+    .company-card { position: relative; width: 280px; padding: 2.5rem 2rem; border: 1px solid var(--border); background: var(--dark-2); cursor: pointer; transition: all 0.4s ease; overflow: hidden; }
+    .company-card::before { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; transform: scaleX(0); transition: transform 0.4s ease; }
     .company-card.hilton::before { background: var(--hilton-light); }
     .company-card.pandero::before { background: var(--pandero-light); }
-
-    .company-card:hover::before,
-    .company-card.active::before { transform: scaleX(1); }
-
-    .company-card:hover,
-    .company-card.active {
-      border-color: rgba(201,168,76,0.3);
-      background: var(--dark-3);
-      transform: translateY(-4px);
-    }
-
+    .company-card:hover::before, .company-card.active::before { transform: scaleX(1); }
+    .company-card:hover, .company-card.active { border-color: rgba(201,168,76,0.3); background: var(--dark-3); transform: translateY(-4px); }
     .company-card.active { box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
-
-    .card-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3.5rem;
-      font-weight: 300;
-      color: var(--border);
-      line-height: 1;
-      margin-bottom: 1rem;
-      transition: color 0.3s;
-    }
-
-    .company-card:hover .card-num,
-    .company-card.active .card-num { color: var(--gold); }
-
-    .card-name {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
-    }
-
-    .card-desc {
-      font-size: 0.78rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-    }
-
-    .card-badge {
-      display: inline-block;
-      margin-top: 1.2rem;
-      padding: 0.3rem 0.9rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      border: 1px solid;
-    }
-
+    .card-num { font-family: 'Cormorant Garamond', serif; font-size: 3.5rem; font-weight: 300; color: var(--border); line-height: 1; margin-bottom: 1rem; transition: color 0.3s; }
+    .company-card:hover .card-num, .company-card.active .card-num { color: var(--gold); }
+    .card-name { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 0.5rem; }
+    .card-desc { font-size: 0.78rem; color: var(--text-muted); letter-spacing: 0.08em; }
+    .card-badge { display: inline-block; margin-top: 1.2rem; padding: 0.3rem 0.9rem; font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; border: 1px solid; }
     .hilton .card-badge { border-color: rgba(0,86,204,0.4); color: #6699DD; }
     .pandero .card-badge { border-color: rgba(192,57,43,0.4); color: #CC6655; }
-
-    /* ── CONTENT AREA ── */
-    .content-area {
-      padding: 2rem;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
+    /* CONTENT */
+    .content-area { padding: 2rem; max-width: 1200px; margin: 0 auto; }
     .company-section { display: none; }
     .company-section.visible { display: block; }
-
-    /* ── SECTION HEADER ── */
-    .section-header {
-      display: flex;
-      align-items: flex-end;
-      justify-content: space-between;
-      padding: 4rem 0 3rem;
-      border-bottom: 1px solid var(--border);
-      margin-bottom: 4rem;
-      gap: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .section-header h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2rem, 5vw, 4rem);
-      font-weight: 300;
-      line-height: 1;
-    }
-
-    .section-header h2 span {
-      display: block;
-      font-size: 0.7rem;
-      font-family: 'DM Sans', sans-serif;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.8rem;
-    }
-
-    .section-stripe {
-      height: 3px;
-      width: 60px;
-    }
-
+    /* SECTION HEADER */
+    .section-header { display: flex; align-items: flex-end; justify-content: space-between; padding: 4rem 0 3rem; border-bottom: 1px solid var(--border); margin-bottom: 4rem; gap: 2rem; flex-wrap: wrap; }
+    .section-header h2 { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 5vw, 4rem); font-weight: 300; line-height: 1; }
+    .section-header h2 span { display: block; font-size: 0.7rem; font-family: 'DM Sans', sans-serif; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+    .section-stripe { height: 3px; width: 60px; }
     .hilton-section .section-stripe { background: var(--hilton-light); }
     .pandero-section .section-stripe { background: var(--pandero-light); }
-
-    /* ── PART TITLES ── */
-    .part-title {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-      margin: 5rem 0 3rem;
-    }
-
-    .part-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 4rem;
-      font-weight: 300;
-      line-height: 1;
-      color: var(--border);
-    }
-
-    .part-label {
-      border-left: 1px solid var(--border);
-      padding-left: 1.5rem;
-    }
-
-    .part-label p {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.4rem;
-    }
-
-    .part-label h3 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.8rem;
-      font-weight: 400;
-    }
-
-    /* ── GRID LAYOUTS ── */
-    .grid-2 {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5px;
-      background: var(--border);
-      margin-bottom: 1.5px;
-    }
-
-    .grid-3 {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.5px;
-      background: var(--border);
-      margin-bottom: 1.5px;
-    }
-
-    /* ── INFO BLOCK ── */
-    .info-block {
-      background: var(--dark-2);
-      padding: 2.5rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .info-block::after {
-      content: '';
-      position: absolute;
-      top: 0; right: 0;
-      width: 1px;
-      height: 40%;
-      background: var(--gold);
-      opacity: 0.3;
-    }
-
-    .info-block .block-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .info-block .block-label::before {
-      content: '';
-      display: inline-block;
-      width: 20px; height: 1px;
-      background: var(--gold);
-    }
-
-    .info-block h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.4rem;
-      font-weight: 400;
-      margin-bottom: 1.2rem;
-      line-height: 1.3;
-    }
-
-    .info-block p {
-      font-size: 0.88rem;
-      line-height: 1.8;
-      color: var(--text-muted);
-    }
-
-    .info-block.featured {
-      background: var(--dark-3);
-      padding: 3rem;
-    }
-
-    .info-block.accent-hilton {
-      border-top: 2px solid var(--hilton-light);
-    }
-
-    .info-block.accent-pandero {
-      border-top: 2px solid var(--pandero-light);
-    }
-
-    /* ── FULL WIDTH BLOCK ── */
-    .full-block {
-      background: var(--dark-2);
-      padding: 3rem;
-      margin-bottom: 1.5px;
-    }
-
-    .full-block .block-label {
-      font-size: 0.62rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.8rem;
-    }
-
-    .full-block .block-label::before {
-      content: '';
-      display: inline-block;
-      width: 20px; height: 1px;
-      background: var(--gold);
-    }
-
-    .full-block h4 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.6rem;
-      font-weight: 400;
-      margin-bottom: 1.5rem;
-    }
-
-    .full-block p {
-      font-size: 0.9rem;
-      line-height: 1.9;
-      color: var(--text-muted);
-      max-width: 800px;
-    }
-
-    /* ── LIST ITEMS ── */
-    .item-list {
-      list-style: none;
-      margin-top: 1rem;
-    }
-
-    .item-list li {
-      padding: 0.7rem 0;
-      border-bottom: 1px solid var(--border);
-      font-size: 0.87rem;
-      color: var(--text-muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 1rem;
-      line-height: 1.6;
-    }
-
-    .item-list li::before {
-      content: '→';
-      color: var(--gold);
-      font-size: 0.8rem;
-      flex-shrink: 0;
-      margin-top: 0.1rem;
-    }
-
-    /* ── HIGHLIGHT STAT ── */
-    .stat-block {
-      background: var(--dark-4);
-      padding: 2rem;
-      text-align: center;
-    }
-
-    .stat-num {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 3rem;
-      font-weight: 300;
-      color: var(--gold-light);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-desc {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
-
-    /* ── TIMELINE ── */
-    .timeline {
-      padding: 1rem 0;
-    }
-
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 2rem;
-      margin-bottom: 2rem;
-      position: relative;
-    }
-
-    .timeline-item::before {
-      content: '';
-      position: absolute;
-      left: 39px;
-      top: 2.5rem;
-      bottom: -1rem;
-      width: 1px;
-      background: var(--border);
-    }
-
+    /* PART TITLE */
+    .part-title { display: flex; align-items: center; gap: 1.5rem; margin: 5rem 0 3rem; }
+    .part-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; line-height: 1; color: var(--border); }
+    .part-label { border-left: 1px solid var(--border); padding-left: 1.5rem; }
+    .part-label p { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; }
+    .part-label h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 400; }
+    /* GRIDS */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border); margin-bottom: 1.5px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); margin-bottom: 1.5px; }
+    /* INFO BLOCK */
+    .info-block { background: var(--dark-2); padding: 2.5rem; position: relative; overflow: hidden; }
+    .info-block::after { content: ''; position: absolute; top: 0; right: 0; width: 1px; height: 40%; background: var(--gold); opacity: 0.3; }
+    .info-block .block-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+    .info-block .block-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
+    .info-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 1.2rem; line-height: 1.3; }
+    .info-block p { font-size: 0.88rem; line-height: 1.8; color: var(--text-muted); }
+    .info-block.featured { background: var(--dark-3); padding: 3rem; }
+    .info-block.accent-hilton { border-top: 2px solid var(--hilton-light); }
+    .info-block.accent-pandero { border-top: 2px solid var(--pandero-light); }
+    /* FULL BLOCK */
+    .full-block { background: var(--dark-2); padding: 3rem; margin-bottom: 1.5px; }
+    .full-block .block-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+    .full-block .block-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
+    .full-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; margin-bottom: 1.5rem; }
+    .full-block p { font-size: 0.9rem; line-height: 1.9; color: var(--text-muted); max-width: 860px; }
+    /* LIST */
+    .item-list { list-style: none; margin-top: 1rem; }
+    .item-list li { padding: 0.75rem 0; border-bottom: 1px solid var(--border); font-size: 0.87rem; color: var(--text-muted); display: flex; align-items: flex-start; gap: 1rem; line-height: 1.6; }
+    .item-list li::before { content: '→'; color: var(--gold); font-size: 0.8rem; flex-shrink: 0; margin-top: 0.1rem; }
+    .item-list li strong { color: var(--text); font-weight: 500; }
+    /* STAT */
+    .stat-block { background: var(--dark-4); padding: 2rem; text-align: center; }
+    .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 300; color: var(--gold-light); line-height: 1; margin-bottom: 0.5rem; }
+    .stat-desc { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--text-muted); }
+    /* TIMELINE */
+    .timeline { padding: 1rem 0; }
+    .timeline-item { display: grid; grid-template-columns: 80px 1fr; gap: 2rem; margin-bottom: 2rem; position: relative; }
+    .timeline-item::before { content: ''; position: absolute; left: 39px; top: 2.5rem; bottom: -1rem; width: 1px; background: var(--border); }
     .timeline-item:last-child::before { display: none; }
-
-    .t-year {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      color: var(--gold);
-      font-weight: 300;
-      text-align: right;
-      padding-top: 0.1rem;
-    }
-
-    .t-dot {
-      position: absolute;
-      left: 34px; top: 0.4rem;
-      width: 11px; height: 11px;
-      border-radius: 50%;
-      border: 2px solid var(--gold);
-      background: var(--dark);
-    }
-
-    .t-content p {
-      font-size: 0.87rem;
-      color: var(--text-muted);
-      line-height: 1.7;
-    }
-
-    .t-content strong {
-      color: var(--text);
-      font-weight: 500;
-    }
-
-    /* ── QUOTE BLOCK ── */
-    .quote-block {
-      padding: 3rem;
-      border-left: 3px solid var(--gold);
-      background: var(--dark-3);
-      margin: 2rem 0;
-    }
-
-    .quote-block p {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1.5rem;
-      font-weight: 300;
-      font-style: italic;
-      line-height: 1.6;
-      color: var(--text);
-    }
-
-    /* ── FOOTER ── */
-    footer {
-      margin-top: 8rem;
-      padding: 3rem;
-      border-top: 1px solid var(--border);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: gap;
-      gap: 1rem;
-    }
-
-    footer p {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      letter-spacing: 0.08em;
-    }
-
-    .footer-mark {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: 1rem;
-      color: var(--gold);
-      letter-spacing: 0.15em;
-    }
-
-    /* ── ANIMATIONS ── */
-    @keyframes fadeUp {
-      from { opacity: 0; transform: translateY(24px); }
-      to   { opacity: 1; transform: translateY(0); }
-    }
-
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.7s ease, transform 0.7s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* ── SCROLLBAR ── */
+    .t-year { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); font-weight: 300; text-align: right; padding-top: 0.1rem; }
+    .t-dot { position: absolute; left: 34px; top: 0.4rem; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--gold); background: var(--dark); }
+    .t-content p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.7; }
+    .t-content strong { color: var(--text); font-weight: 500; }
+    /* QUOTE */
+    .quote-block { padding: 3rem; border-left: 3px solid var(--gold); background: var(--dark-3); margin: 2rem 0; }
+    .quote-block p { font-family: 'Cormorant Garamond', serif; font-size: 1.45rem; font-weight: 300; font-style: italic; line-height: 1.6; color: var(--text); }
+    /* MODEL GRID */
+    .model-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--border); margin-top: 2rem; }
+    .model-item { background: var(--dark-3); padding: 2rem; }
+    .model-num { font-family: 'Cormorant Garamond', serif; font-size: 2rem; color: var(--gold); opacity: 0.5; margin-bottom: 0.5rem; }
+    .model-item h5 { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; margin-bottom: 0.8rem; color: var(--text); }
+    .model-item p { font-size: 0.82rem; color: var(--text-muted); line-height: 1.7; }
+    /* THEORY SECTION */
+    .theory-section { padding: 5rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .theory-intro { background: var(--dark-3); padding: 3rem; border-left: 3px solid var(--gold); margin-bottom: 1.5px; }
+    .theory-intro h3 { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; margin-bottom: 1.2rem; }
+    .theory-intro h3 span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .theory-intro p { font-size: 0.9rem; color: var(--text-muted); line-height: 1.9; max-width: 820px; }
+    .theory-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border); margin-top: 0; }
+    .theory-block { background: var(--dark-2); padding: 2.5rem; }
+    .theory-block .t-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1rem; display: flex; align-items: center; gap: 0.8rem; }
+    .theory-block .t-label::before { content: ''; display: inline-block; width: 20px; height: 1px; background: var(--gold); }
+    .theory-block h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; font-weight: 400; margin-bottom: 1rem; }
+    .theory-block p { font-size: 0.87rem; color: var(--text-muted); line-height: 1.8; }
+    .concept-tag { display: inline-block; padding: 0.25rem 0.75rem; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; margin: 0.3rem 0.2rem 0 0; }
+    /* MODEL TAG */
+    .model-tag { display: inline-flex; align-items: center; gap: 0.6rem; padding: 0.5rem 1.2rem; border: 1px solid rgba(201,168,76,0.5); margin-bottom: 1.5rem; }
+    .model-tag span { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); }
+    .model-tag::before { content: '◆'; font-size: 0.5rem; color: var(--gold); }
+    /* SOURCES */
+    .sources-section { padding: 4rem 2rem 2rem; max-width: 1200px; margin: 0 auto; }
+    .sources-header { border-bottom: 1px solid var(--border); padding-bottom: 2rem; margin-bottom: 3rem; }
+    .sources-header h2 { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; }
+    .sources-header h2 span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+    .sources-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px; background: var(--border); }
+    .source-block { background: var(--dark-2); padding: 2rem 2.5rem; }
+    .source-block h5 { font-family: 'Cormorant Garamond', serif; font-size: 1rem; font-weight: 400; color: var(--gold); margin-bottom: 1.2rem; letter-spacing: 0.05em; }
+    .source-item { padding: 0.65rem 0; border-bottom: 1px solid var(--border); }
+    .source-item:last-child { border-bottom: none; }
+    .source-item p { font-size: 0.78rem; color: var(--text-muted); line-height: 1.65; }
+    .source-item p strong { color: var(--text); font-weight: 500; }
+    .source-item a { color: rgba(201,168,76,0.7); text-decoration: none; font-size: 0.72rem; word-break: break-all; display: block; margin-top: 0.2rem; }
+    .source-item a:hover { color: var(--gold); }
+    /* FOOTER */
+    footer { margin-top: 4rem; padding: 3rem; border-top: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    footer p { font-size: 0.75rem; color: var(--text-muted); letter-spacing: 0.08em; }
+    .footer-mark { font-family: 'Cormorant Garamond', serif; font-size: 1rem; color: var(--gold); letter-spacing: 0.15em; }
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+    /* SCROLLBAR */
     ::-webkit-scrollbar { width: 4px; }
     ::-webkit-scrollbar-track { background: var(--dark); }
     ::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
-
-    /* ── RESPONSIVE ── */
+    /* RESPONSIVE */
     @media (max-width: 768px) {
       header { padding: 1rem 1.5rem; }
       nav { gap: 1rem; }
-      nav a { font-size: 0.7rem; }
-      .grid-2, .grid-3 { grid-template-columns: 1fr; }
-      .info-block, .full-block { padding: 1.8rem; }
+      .grid-2, .grid-3, .model-grid, .theory-grid, .sources-grid { grid-template-columns: 1fr; }
+      .info-block, .full-block, .theory-block, .theory-intro, .source-block { padding: 1.8rem; }
       .content-area { padding: 1rem; }
       .selector { padding: 3rem 1rem 2rem; }
       .company-card { width: 100%; max-width: 340px; }
+      .theory-section, .sources-section { padding: 3rem 1rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div class="header-logo">Análisis Empresarial</div>
-    <nav>
-      <a href="#hilton">Hilton</a>
-      <div class="nav-dot"></div>
-      <a href="#pandero">Pandero</a>
-    </nav>
-  </header>
+<header>
+  <div class="header-logo">Análisis Empresarial</div>
+  <nav>
+    <a onclick="showCompany('hilton')">Hilton</a>
+    <div class="nav-dot"></div>
+    <a onclick="showCompany('pandero')">Pandero</a>
+    <div class="nav-dot"></div>
+    <a href="#fuentes">Fuentes</a>
+  </nav>
+</header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-line">
-      <div class="hero-tag">Intraemprendimiento & Estrategia</div>
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-tag">Intraemprendimiento &amp; Estrategia Corporativa</div>
+  <h1>Dos <em>Empresas,</em><br>Una Visión</h1>
+  <p class="hero-sub">Análisis empresarial comparativo: actualidad corporativa y propuestas de intraemprendimiento para Hilton Hotels &amp; Resorts y Grupo Pandero.</p>
+  <div class="hero-divider"><span>Selecciona una empresa para comenzar</span></div>
+</section>
+
+<div class="selector">
+  <div class="company-card hilton" onclick="showCompany('hilton')">
+    <div class="card-num">01</div>
+    <div class="card-name">Hilton Hotels</div>
+    <div class="card-desc">Hospitalidad global de primer nivel</div>
+    <div class="card-badge">Hotelería Internacional</div>
+  </div>
+  <div class="company-card pandero" onclick="showCompany('pandero')">
+    <div class="card-num">02</div>
+    <div class="card-name">Grupo Pandero</div>
+    <div class="card-desc">Fondos colectivos y ahorro programado</div>
+    <div class="card-badge">Finanzas &amp; Sector Automotriz</div>
+  </div>
+</div>
+
+<div class="content-area">
+
+  <section id="marco" style="padding: 5rem 0 2rem;">
+    <div class="theory-intro fade-in">
+      <h3><span>Marco Conceptual</span>¿Qué es el Intraemprendimiento?</h3>
+      <p>El intraemprendimiento (o <em>intrapreneurship</em>) es la práctica de fomentar comportamientos emprendedores dentro de una organización existente, permitiendo que los colaboradores actúen como emprendedores internos para generar innovación, nuevos productos, procesos o modelos de negocio sin abandonar la empresa. El término fue acuñado por <strong>Gifford Pinchot III</strong> en 1978 y popularizado en su libro <em>Intrapreneuring</em> (1985), donde definió al intraemprendedor como "aquel soñador que sabe cómo hacer que sus ideas se conviertan en realidades rentables dentro de la organización". A diferencia del emprendedor externo, el intraemprendedor opera con los recursos, marca y estructura de una empresa establecida, lo que reduce el riesgo pero exige superar barreras organizacionales. Según Antoncic y Hisrich (2003), el intraemprendimiento comprende cuatro dimensiones: nuevos negocios internos, innovación, auto-renovación estratégica y proactividad.</p>
+      <div style="margin-top:1.5rem;">
+        <span class="concept-tag">Innovación interna</span>
+        <span class="concept-tag">Cultura emprendedora</span>
+        <span class="concept-tag">Autonomía del colaborador</span>
+        <span class="concept-tag">Tolerancia al riesgo</span>
+        <span class="concept-tag">Modelo Pinchot</span>
+        <span class="concept-tag">Auto-renovación</span>
+      </div>
     </div>
-    <h1>Dos <em>Empresas,</em><br>Una Visión</h1>
-    <p class="hero-sub">Análisis empresarial comparativo enfocado en actualidad corporativa y propuestas de intraemprendimiento innovador.</p>
-    <div class="hero-divider">
-      <span>Selecciona una empresa para comenzar</span>
+    <div class="theory-grid fade-in">
+      <div class="theory-block">
+        <div class="t-label">Dimensión 1</div>
+        <h4>Nuevos Negocios Internos</h4>
+        <p>Creación de nuevas unidades de negocio, productos o servicios dentro de la organización existente. El intraemprendedor identifica una oportunidad de mercado y la desarrolla con recursos corporativos, generando crecimiento sin necesidad de spin-offs o nuevas empresas (Pinchot, 1985).</p>
+      </div>
+      <div class="theory-block">
+        <div class="t-label">Dimensión 2</div>
+        <h4>Innovación y Proactividad</h4>
+        <p>Desarrollo de nuevos productos, procesos o tecnologías que mejoran la competitividad de la empresa. La proactividad implica anticiparse a los cambios del entorno antes que la competencia, siendo el intraemprendedor el puente entre la detección de la oportunidad y su implementación (Antoncic & Hisrich, 2003).</p>
+      </div>
+      <div class="theory-block">
+        <div class="t-label">Dimensión 3</div>
+        <h4>Auto-renovación Estratégica</h4>
+        <p>Transformación de la organización a través de nuevas ideas, estrategias y estructuras que revitalizan el modelo de negocio. Implica un cambio cultural profundo que otorga al colaborador la autonomía necesaria para proponer y ejecutar mejoras sin requerir aprobación jerárquica constante.</p>
+      </div>
+      <div class="theory-block">
+        <div class="t-label">Dimensión 4</div>
+        <h4>Cultura y Entorno Habilitador</h4>
+        <p>Para que el intraemprendimiento florezca, la organización debe construir un entorno que tolere el error, celebre la iniciativa y destine recursos a la experimentación. Según Sharma y Chrisman (1999), sin una cultura organizacional que respalde al intraemprendedor, las barreras burocráticas y el miedo al fracaso neutralizan cualquier intento innovador.</p>
+      </div>
     </div>
   </section>
 
-  <!-- SELECTOR -->
-  <div class="selector">
-    <div class="company-card hilton" onclick="showCompany('hilton')">
-      <div class="card-num">01</div>
-      <div class="card-name">Hilton Hotels</div>
-      <div class="card-desc">Hospitalidad global de primer nivel</div>
-      <div class="card-badge">Hotelería Internacional</div>
+  <div id="hilton" class="company-section hilton-section">
+
+    <div class="section-header fade-in">
+      <div><h2><span>Empresa 01</span>Hilton Hotels<br>&amp; Resorts</h2></div>
+      <div class="section-stripe"></div>
     </div>
-    <div class="company-card pandero" onclick="showCompany('pandero')">
-      <div class="card-num">02</div>
-      <div class="card-name">Grupo Pandero</div>
-      <div class="card-desc">Soluciones de ahorro programado</div>
-      <div class="card-badge">Finanzas & Vivienda</div>
+
+    <div class="part-title fade-in">
+      <div class="part-num">1</div>
+      <div class="part-label"><p>Parte uno</p><h3>Actualidad Empresarial</h3></div>
     </div>
-  </div>
 
-  <!-- CONTENT -->
-  <div class="content-area">
+    <div class="full-block fade-in">
+      <div class="block-label">A — Descripción</div>
+      <h4>¿Quiénes son?</h4>
+      <p>Hilton Worldwide es una de las compañías hoteleras más importantes del mundo, fundada en 1919 por Conrad Hilton. Se especializa en ofrecer experiencias de hospitalidad de alta calidad, abarcando desde hoteles de lujo hasta opciones accesibles. Su propuesta de valor se sustenta en la innovación constante, el servicio al cliente y una fuerte presencia global que la posiciona como marca líder de la industria turística. Con más de 100 años de trayectoria, ha desarrollado estándares globales que garantizan consistencia en todos sus hoteles, generando confianza y fidelidad en millones de huéspedes.</p>
+    </div>
 
-    <!-- ═══════════════════════════ HILTON ═══════════════════════════ -->
-    <div id="hilton" class="company-section hilton-section">
-      <div class="section-header fade-in">
-        <div>
-          <h2><span>Empresa 01</span>Hilton Hotels<br>&amp; Resorts</h2>
+    <div class="grid-3 fade-in">
+      <div class="stat-block"><div class="stat-num">118+</div><div class="stat-desc">Países presentes</div></div>
+      <div class="stat-block"><div class="stat-num">7,500+</div><div class="stat-desc">Propiedades globales</div></div>
+      <div class="stat-block"><div class="stat-num">20+</div><div class="stat-desc">Marcas hoteleras</div></div>
+    </div>
+
+    <div class="full-block fade-in">
+      <div class="block-label">B — Historia</div>
+      <h4>Trayectoria Corporativa</h4>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="t-year">1919</div>
+          <div style="position:relative;"><div class="t-dot"></div>
+          <div class="t-content"><p><strong>Fundación.</strong> Conrad Hilton adquiere su primer hotel en Cisco, Texas (EE.UU.), con la visión de crear una cadena hotelera de referencia mundial.</p></div></div>
         </div>
-        <div class="section-stripe"></div>
-      </div>
-
-      <!-- PARTE 1: ACTUALIDAD EMPRESARIAL -->
-      <div class="part-title fade-in">
-        <div class="part-num">1</div>
-        <div class="part-label">
-          <p>Parte uno</p>
-          <h3>Actualidad Empresarial</h3>
+        <div class="timeline-item">
+          <div class="t-year">1949</div>
+          <div style="position:relative;"><div class="t-dot"></div>
+          <div class="t-content"><p><strong>Expansión internacional.</strong> Se inaugura el Caribe Hilton en Puerto Rico, el primer hotel de la cadena fuera de EE.UU.</p></div></div>
         </div>
-      </div>
-
-      <!-- a. Descripción -->
-      <div class="full-block fade-in">
-        <div class="block-label">A — Descripción</div>
-        <h4>¿Quiénes son?</h4>
-        <p>[Ingresa aquí la descripción general de Hilton Hotels: misión, visión, valores corporativos, posicionamiento en el mercado global y propuesta de valor diferencial.]</p>
-      </div>
-
-      <!-- Stats decorativos (reemplazar con datos reales) -->
-      <div class="grid-3 fade-in">
-        <div class="stat-block">
-          <div class="stat-num">[#]</div>
-          <div class="stat-desc">Países presentes</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">[#]</div>
-          <div class="stat-desc">Propiedades globales</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">[#]</div>
-          <div class="stat-desc">Marcas hoteleras</div>
+        <div class="timeline-item">
+          <div class="t-year">2017</div>
+          <div style="position:relative;"><div class="t-dot"></div>
+          <div class="t-content"><p><strong>Consolidación e Innovación.</strong> Hilton inaugura centros corporativos orientados al futuro de la hospitalidad, superando hoy las 7,000 propiedades a nivel mundial.</p></div></div>
         </div>
       </div>
+    </div>
 
-      <!-- b. Historia -->
-      <div class="full-block fade-in">
-        <div class="block-label">B — Historia</div>
-        <h4>Trayectoria Corporativa</h4>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Fundación.</strong> [Describe el origen de Hilton Hotels, quién la fundó, en qué contexto y con qué visión inicial.]</p></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Expansión.</strong> [Hito clave en la expansión nacional o internacional de la cadena.]</p></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Consolidación.</strong> [Momento de consolidación como marca mundial: adquisiciones, cotización en bolsa, alianzas estratégicas, etc.]</p></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Actualidad.</strong> [Estado actual de la empresa: estrategia reciente, renovaciones, presencia digital y transformación.]</p></div>
-            </div>
-          </div>
-        </div>
-      </div>
+    <div class="full-block fade-in">
+      <div class="block-label">C — Productos y Servicios</div>
+      <h4>Oferta de Valor</h4>
+      <p>Hilton Worldwide ofrece alojamiento segmentado, experiencias gastronómicas de nivel internacional, servicios corporativos premium e innovación digital (como el check-in móvil y la personalización impulsada por IA) complementado con su galardonado programa Hilton Honors.</p>
+    </div>
 
-      <!-- c. Productos y Servicios -->
-      <div class="part-title fade-in" style="margin-top:3rem">
-        <div></div>
+    <div class="grid-2 fade-in">
+      <div class="info-block accent-hilton">
+        <div class="block-label">D — Mercado</div>
+        <h4>Segmentación de Mercado</h4>
+        <p>Atiende a turistas de alto poder adquisitivo, viajeros corporativos y familias globales que priorizan confort y experiencias personalizadas en América, Europa, Asia, Medio Oriente y África.</p>
       </div>
-      <div class="full-block fade-in">
-        <div class="block-label">C — Productos y Servicios</div>
-        <h4>Oferta de Valor</h4>
-        <p>[Descripción general del portafolio de productos y servicios de Hilton.]</p>
-        <ul class="item-list" style="margin-top:1.5rem">
-          <li>[Servicio o producto 1: descripción breve]</li>
-          <li>[Servicio o producto 2: descripción breve]</li>
-          <li>[Servicio o producto 3: descripción breve]</li>
-          <li>[Servicio o producto 4: descripción breve]</li>
-          <li>[Servicio o producto 5: descripción breve]</li>
+      <div class="info-block accent-hilton">
+        <div class="block-label">D — Clientes</div>
+        <h4>Perfil del Cliente</h4>
+        <p>Viajeros modernos que valoran tanto los estándares tradicionales de un servicio premium como las comodidades digitales (Llave digital, selección remota de habitaciones, etc.).</p>
+      </div>
+    </div>
+
+    <div class="part-title fade-in">
+      <div class="part-num">2</div>
+      <div class="part-label"><p>Parte dos</p><h3>Planificación del Intraemprendimiento</h3></div>
+    </div>
+
+    <div class="full-block fade-in">
+      <div class="block-label">A — Cultura Innovadora</div>
+      <h4>Estrategias para Fomentar la Innovación Interna</h4>
+      <ul class="item-list" style="margin-top:1.5rem">
+        <li><strong>Laboratorios formales de innovación:</strong> Creación de sedes físicas y presupuestos dedicados para que los colaboradores diseñen y evalúen mejoras operativas.</li>
+        <li><strong>Fomento del "Team Member" como agente creativo:</strong> Involucrar a los empleados de primera línea en la ideación de productos que solucionen fricciones de la hospitalidad.</li>
+      </ul>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div class="info-block featured">
+        <div class="block-label">B — Entorno</div>
+        <h4>Cambios que Afectan a la Empresa</h4>
+        <ul class="item-list">
+          <li><strong>Disrupción digital:</strong> Competencia de Airbnb y apps de viajes.</li>
+          <li><strong>Evolución del B2B:</strong> Requisitos cambiantes en los espacios de eventos corporativos y trabajo híbrido post-pandemia.</li>
         </ul>
       </div>
-
-      <!-- d. Mercado y Clientes -->
-      <div class="grid-2 fade-in">
-        <div class="info-block accent-hilton">
-          <div class="block-label">D — Mercado</div>
-          <h4>Segmentación de Mercado</h4>
-          <p>[Describe los segmentos de mercado que atiende Hilton: geográfico, demográfico, psicográfico. Incluye mercados clave, regiones estratégicas y tendencias del sector hotelero.]</p>
-        </div>
-        <div class="info-block accent-hilton">
-          <div class="block-label">D — Clientes</div>
-          <h4>Perfil del Cliente</h4>
-          <p>[Describe el perfil del cliente típico de Hilton: viajeros de negocios, turismo de lujo, familias, grupos corporativos, millennials, etc. Incluye comportamiento de compra y preferencias.]</p>
-        </div>
-      </div>
-
-      <!-- PARTE 2: INTRAEMPRENDIMIENTO -->
-      <div class="part-title fade-in">
-        <div class="part-num">2</div>
-        <div class="part-label">
-          <p>Parte dos</p>
-          <h3>Planificación del Intraemprendimiento</h3>
-        </div>
-      </div>
-
-      <!-- a. Cultura Innovadora -->
-      <div class="full-block fade-in">
-        <div class="block-label">A — Cultura Innovadora</div>
-        <h4>Estrategias para Fomentar la Innovación Interna</h4>
-        <p>[Describe las estrategias propuestas o existentes para fomentar una cultura innovadora dentro de Hilton. Puedes incluir programas internos, políticas de gestión del talento, espacios de ideación, incentivos a empleados, etc.]</p>
-        <ul class="item-list" style="margin-top:1.5rem">
-          <li>[Estrategia 1: descripción]</li>
-          <li>[Estrategia 2: descripción]</li>
-          <li>[Estrategia 3: descripción]</li>
-        </ul>
-      </div>
-
-      <!-- b. Cambios del Entorno -->
-      <div class="grid-2 fade-in">
-        <div class="info-block featured">
-          <div class="block-label">B — Entorno</div>
-          <h4>Cambios que Afectan a la Empresa</h4>
-          <p>[Analiza los cambios externos e internos que impactan a Hilton: tecnología, digitalización, sostenibilidad, competencia de plataformas como Airbnb, cambios post-pandemia, regulaciones, etc.]</p>
-        </div>
-        <div class="info-block">
-          <div class="block-label">C — Barreras</div>
-          <h4>Barreras para Intraemprender</h4>
-          <ul class="item-list">
-            <li>[Barrera 1: resistencia al cambio, burocracia, falta de recursos, etc.]</li>
-            <li>[Barrera 2]</li>
-            <li>[Barrera 3]</li>
-            <li>[Barrera 4]</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- d. Modelo de Intraemprendimiento -->
-      <div class="full-block fade-in">
-        <div class="block-label">D — Modelo</div>
-        <h4>Modelo de Intraemprendimiento Propuesto</h4>
-        <p>[Describe el modelo de intraemprendimiento aplicable o propuesto para Hilton. Puede basarse en metodologías como el Corporate Entrepreneurship, Lean Startup interno, Laboratorios de innovación, etc. Explica su estructura, fases y actores involucrados.]</p>
-      </div>
-
-      <div class="quote-block fade-in">
-        <p>"[Cita inspiradora o declaración corporativa clave relacionada con la innovación y el futuro de Hilton Hotels]"</p>
-      </div>
-
-      <!-- e. Experiencia Intraemprendedora -->
-      <div class="full-block fade-in">
-        <div class="block-label">E — Experiencia</div>
-        <h4>Experiencia Intraemprendedora</h4>
-        <p>[Describe casos reales o propuestos de intraemprendimiento dentro de Hilton: proyectos internos exitosos, iniciativas de empleados, nuevas líneas de negocio desarrolladas internamente, programas de aceleración corporativa, resultados obtenidos.]</p>
-        <ul class="item-list" style="margin-top:1.5rem">
-          <li>[Caso o iniciativa intraemprendedora 1]</li>
-          <li>[Caso o iniciativa intraemprendedora 2]</li>
-          <li>[Caso o iniciativa intraemprendedora 3]</li>
+      <div class="info-block">
+        <div class="block-label">C — Barreras</div>
+        <h4>Barreras para Intraemprender</h4>
+        <ul class="item-list">
+          <li><strong>Tamaño Corporativo:</strong> Organizaciones de más de 100 años tienden a ralentizar la toma de decisiones por altos estándares de marca a nivel global.</li>
+          <li><strong>Aversión al riesgo en la experiencia del huésped:</strong> Miedo a testear soluciones no probadas en entornos premium.</li>
         </ul>
       </div>
     </div>
 
-    <!-- ═══════════════════════════ PANDERO ═══════════════════════════ -->
-    <div id="pandero" class="company-section pandero-section">
-      <div class="section-header fade-in">
-        <div>
-          <h2><span>Empresa 02</span>Grupo<br>Pandero</h2>
-        </div>
-        <div class="section-stripe"></div>
-      </div>
+    <div class="full-block fade-in">
+      <div class="block-label">D — Modelo de Intraemprendimiento</div>
+      <h4>Modelo Propuesto: Incubadora Corporativa (Corporate Incubator)</h4>
+      <p>Para Hilton se identifica e implementa el modelo de <strong>Incubadora Corporativa</strong>. Este modelo crea un entorno paralelo seguro (un laboratorio o centro de I+D) aislado de la burocracia corporativa diaria, donde se asignan recursos, espacio y mentoría para que los equipos prueben e iteren tecnologías o conceptos de hospitalidad antes de implementarlos a gran escala.</p>
+    </div>
 
-      <!-- PARTE 1: ACTUALIDAD EMPRESARIAL -->
-      <div class="part-title fade-in">
-        <div class="part-num">1</div>
-        <div class="part-label">
-          <p>Parte uno</p>
-          <h3>Actualidad Empresarial</h3>
-        </div>
-      </div>
+    <div class="quote-block fade-in">
+      <p>"La innovación en Hilton no nace de arriba hacia abajo — nace de los equipos que viven el servicio cada día probando ideas en entornos controlados."</p>
+    </div>
 
-      <!-- a. Descripción -->
-      <div class="full-block fade-in">
-        <div class="block-label">A — Descripción</div>
-        <h4>¿Quiénes son?</h4>
-        <p>[Ingresa aquí la descripción general de Grupo Pandero: misión, visión, valores corporativos, posicionamiento en el mercado peruano y propuesta de valor diferencial frente a otras entidades financieras o inmobiliarias.]</p>
-      </div>
+    <div class="full-block fade-in">
+      <div class="block-label">E — Experiencia Intraemprendedora</div>
+      <h4>Iniciativas y Casos Destacados: The Innovation Gallery</h4>
+      <p>El mayor ejemplo actual de la cultura intraemprendedora de Hilton es la creación de la <strong>Hilton Innovation Gallery</strong>, inaugurada en 2017 junto a su sede corporativa global en McLean, Virginia. Este espacio físico de más de 4,000 pies cuadrados funciona como una incubadora inmersiva donde expertos, líderes y empleados validan nuevas soluciones de diseño y tecnología.</p>
+      <ul class="item-list" style="margin-top:1.5rem">
+        <li><strong>Desarrollo de tecnologías inmersivas:</strong> Intraemprendedores internos utilizan este laboratorio para integrar Realidad Virtual y componentes A/V complejos para testear "la habitación de hotel del futuro" y experiencias digitales como el Digital Key.</li>
+        <li><strong>Nuevas líneas de negocio B2B:</strong> A partir de las pruebas exitosas del diseño interno de la Innovation Gallery, los colaboradores propulsaron un nuevo formato de espacios de reunión para clientes corporativos (Innovation Gallery-inspired meeting spaces) que ahora se comercializa a gran escala.</li>
+      </ul>
+    </div>
 
-      <div class="grid-3 fade-in">
-        <div class="stat-block">
-          <div class="stat-num">[#]</div>
-          <div class="stat-desc">Años en el mercado</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">[#]</div>
-          <div class="stat-desc">Clientes atendidos</div>
-        </div>
-        <div class="stat-block">
-          <div class="stat-num">[#]</div>
-          <div class="stat-desc">Productos activos</div>
-        </div>
-      </div>
+  </div><div id="pandero" class="company-section pandero-section">
 
-      <!-- b. Historia -->
-      <div class="full-block fade-in">
-        <div class="block-label">B — Historia</div>
-        <h4>Trayectoria Corporativa</h4>
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Fundación.</strong> [Describe el origen de Grupo Pandero, sus fundadores, contexto económico peruano y visión inicial del negocio.]</p></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Crecimiento.</strong> [Hito clave de crecimiento: expansión de productos, cobertura geográfica o base de clientes.]</p></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Transformación.</strong> [Cambio estratégico importante: digitalización, nuevas líneas de negocio, reestructuración.]</p></div>
-            </div>
-          </div>
-          <div class="timeline-item">
-            <div class="t-year">[Año]</div>
-            <div style="position:relative;">
-              <div class="t-dot"></div>
-              <div class="t-content"><p><strong>Actualidad.</strong> [Estado actual: estrategia presente, alianzas, reconocimientos, posicionamiento competitivo.]</p></div>
-            </div>
-          </div>
+    <div class="section-header fade-in">
+      <div><h2><span>Empresa 02</span>Grupo<br>Pandero</h2></div>
+      <div class="section-stripe"></div>
+    </div>
+
+    <div class="part-title fade-in">
+      <div class="part-num">1</div>
+      <div class="part-label"><p>Parte uno</p><h3>Actualidad Empresarial</h3></div>
+    </div>
+
+    <div class="full-block fade-in">
+      <div class="block-label">A — Descripción</div>
+      <h4>¿Quiénes son?</h4>
+      <p>Pandero S.A. EAFC es la administradora de fondos colectivos líder en Perú, con más de 50 años en el mercado y supervisada por la Superintendencia del Mercado de Valores (SMV). Acompañan a peruanos a financiar automóviles y propiedades mediante aportes programados (remates y sorteos) sin acudir al crédito bancario tradicional, con más de 56,000 contratos activos.</p>
+    </div>
+
+    <div class="grid-3 fade-in">
+      <div class="stat-block"><div class="stat-num">50+</div><div class="stat-desc">Años de historia</div></div>
+      <div class="stat-block"><div class="stat-num">100K+</div><div class="stat-desc">Clientes atendidos</div></div>
+      <div class="stat-block"><div class="stat-num">70%+</div><div class="stat-desc">Share de mercado</div></div>
+    </div>
+
+    <div class="full-block fade-in">
+      <div class="block-label">B — Historia</div>
+      <h4>Trayectoria Corporativa</h4>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="t-year">1973</div>
+          <div style="position:relative;"><div class="t-dot"></div>
+          <div class="t-content"><p><strong>Fundación.</strong> Creación del sistema de financiamiento programado y alternativo a la banca tradicional peruana.</p></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="t-year">2013</div>
+          <div style="position:relative;"><div class="t-dot"></div>
+          <div class="t-content"><p><strong>Respaldo corporativo.</strong> Fortalecimiento con el Grupo Mitsui, brindando mayor solidez y confianza en la región.</p></div></div>
+        </div>
+        <div class="timeline-item">
+          <div class="t-year">Hoy</div>
+          <div style="position:relative;"><div class="t-dot"></div>
+          <div class="t-content"><p><strong>Migración Tecnológica.</strong> Modernización hacia una infraestructura 100% digital a cargo de la Gerencia de Tecnología e Innovación.</p></div></div>
         </div>
       </div>
+    </div>
 
-      <!-- c. Productos y Servicios -->
-      <div class="full-block fade-in">
-        <div class="block-label">C — Productos y Servicios</div>
-        <h4>Oferta de Valor</h4>
-        <p>[Descripción general del portafolio de productos y servicios de Grupo Pandero.]</p>
-        <ul class="item-list" style="margin-top:1.5rem">
-          <li>[Producto o servicio 1: ej. ahorro programado para vivienda — descripción]</li>
-          <li>[Producto o servicio 2: descripción breve]</li>
-          <li>[Producto o servicio 3: descripción breve]</li>
-          <li>[Producto o servicio 4: descripción breve]</li>
-          <li>[Producto o servicio 5: descripción breve]</li>
+    <div class="full-block fade-in">
+      <div class="block-label">C — Productos y Servicios</div>
+      <h4>Oferta de Valor</h4>
+      <p>Vehículos 0km e inmuebles a través del ahorro colectivo transparente (sorteos y remates). Poseen diversas líneas (Pandero VW, Suzuki, Hyundai, Directo, Inmuebles) apoyadas en una red expansiva de puntos de venta a nivel nacional.</p>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div class="info-block accent-pandero">
+        <div class="block-label">D — Mercado</div>
+        <h4>Segmentación de Mercado</h4>
+        <p>Familias, emprendedores y adultos de NSE medio en Perú que buscan planificación financiera responsable sin la carga de altos intereses bancarios.</p>
+      </div>
+      <div class="info-block accent-pandero">
+        <div class="block-label">D — Clientes</div>
+        <h4>Perfil del Cliente</h4>
+        <p>Consumidores informados que valoran la seguridad del dinero, la transparencia del grupo colectivo y que hoy demandan canales digitales rápidos para el monitoreo de sus fondos.</p>
+      </div>
+    </div>
+
+    <div class="part-title fade-in">
+      <div class="part-num">2</div>
+      <div class="part-label"><p>Parte dos</p><h3>Planificación del Intraemprendimiento</h3></div>
+    </div>
+
+    <div class="full-block fade-in">
+      <div class="block-label">A — Cultura Innovadora</div>
+      <h4>Estrategias para Fomentar la Innovación Interna</h4>
+      <ul class="item-list" style="margin-top:1.5rem">
+        <li><strong>Ambiente Great Place To Work (GPTW):</strong> Pandero fomenta una retención de talento sostenida creando espacios seguros donde los trabajadores de TI y Ventas pueden sugerir cambios.</li>
+        <li><strong>Promoción del desarrollo ágil:</strong> Inversión en capacidades técnicas para que los colaboradores resuelvan los cuellos de botella de la atención física mediante integraciones de software.</li>
+      </ul>
+    </div>
+
+    <div class="grid-2 fade-in">
+      <div class="info-block featured">
+        <div class="block-label">B — Entorno</div>
+        <h4>Cambios que Afectan a la Empresa</h4>
+        <ul class="item-list">
+          <li><strong>Ecosistema Fintech:</strong> Crecimiento exponencial de opciones de crédito rápidas y 100% online en el Perú.</li>
+          <li><strong>Cultura móvil:</strong> El consumidor actual rechaza la presencialidad obligatoria para trámites financieros o seguimiento de asambleas.</li>
         </ul>
       </div>
-
-      <!-- d. Mercado y Clientes -->
-      <div class="grid-2 fade-in">
-        <div class="info-block accent-pandero">
-          <div class="block-label">D — Mercado</div>
-          <h4>Segmentación de Mercado</h4>
-          <p>[Describe los segmentos de mercado de Grupo Pandero: nivel socioeconómico, mercados geográficos dentro del Perú, nichos de clientes, competidores directos y tendencias del sector financiero-inmobiliario peruano.]</p>
-        </div>
-        <div class="info-block accent-pandero">
-          <div class="block-label">D — Clientes</div>
-          <h4>Perfil del Cliente</h4>
-          <p>[Describe el perfil del cliente típico de Grupo Pandero: jóvenes adultos, familias que buscan vivienda propia, NSE medio, características comportamentales, motivaciones de ahorro, fidelidad y ciclo de vida del cliente.]</p>
-        </div>
-      </div>
-
-      <!-- PARTE 2: INTRAEMPRENDIMIENTO -->
-      <div class="part-title fade-in">
-        <div class="part-num">2</div>
-        <div class="part-label">
-          <p>Parte dos</p>
-          <h3>Planificación del Intraemprendimiento</h3>
-        </div>
-      </div>
-
-      <!-- a. Cultura Innovadora -->
-      <div class="full-block fade-in">
-        <div class="block-label">A — Cultura Innovadora</div>
-        <h4>Estrategias para Fomentar la Innovación Interna</h4>
-        <p>[Describe las estrategias propuestas o existentes para fomentar una cultura innovadora dentro de Grupo Pandero. Incluye cómo la empresa puede incentivar la creatividad de sus colaboradores en el contexto de una empresa financiera peruana.]</p>
-        <ul class="item-list" style="margin-top:1.5rem">
-          <li>[Estrategia 1: descripción]</li>
-          <li>[Estrategia 2: descripción]</li>
-          <li>[Estrategia 3: descripción]</li>
-        </ul>
-      </div>
-
-      <!-- b y c -->
-      <div class="grid-2 fade-in">
-        <div class="info-block featured">
-          <div class="block-label">B — Entorno</div>
-          <h4>Cambios que Afectan a la Empresa</h4>
-          <p>[Analiza los cambios externos e internos que impactan a Grupo Pandero: entorno regulatorio peruano, nuevas fintechs, digitalización financiera, cambios económicos, inflación, nuevas expectativas del consumidor, etc.]</p>
-        </div>
-        <div class="info-block">
-          <div class="block-label">C — Barreras</div>
-          <h4>Barreras para Intraemprender</h4>
-          <ul class="item-list">
-            <li>[Barrera 1: cultura organizacional conservadora, falta de presupuesto para I+D, etc.]</li>
-            <li>[Barrera 2]</li>
-            <li>[Barrera 3]</li>
-            <li>[Barrera 4]</li>
-          </ul>
-        </div>
-      </div>
-
-      <!-- d. Modelo -->
-      <div class="full-block fade-in">
-        <div class="block-label">D — Modelo</div>
-        <h4>Modelo de Intraemprendimiento Propuesto</h4>
-        <p>[Describe el modelo de intraemprendimiento aplicable o propuesto para Grupo Pandero. Considera las particularidades del sector financiero peruano, el tamaño de la empresa y sus capacidades internas. Puede incluir estructura de un equipo intrapreneurial, fases de validación y escalado, y mecanismos de gobernanza.]</p>
-      </div>
-
-      <div class="quote-block fade-in">
-        <p>"[Cita inspiradora o declaración corporativa clave relacionada con la visión de innovación y futuro de Grupo Pandero]"</p>
-      </div>
-
-      <!-- e. Experiencia -->
-      <div class="full-block fade-in">
-        <div class="block-label">E — Experiencia</div>
-        <h4>Experiencia Intraemprendedora</h4>
-        <p>[Describe casos reales o propuestos de intraemprendimiento dentro de Grupo Pandero: nuevos productos desarrollados internamente, mejoras de procesos impulsadas por empleados, iniciativas digitales, pilotos de innovación y los resultados obtenidos.]</p>
-        <ul class="item-list" style="margin-top:1.5rem">
-          <li>[Caso o iniciativa intraemprendedora 1]</li>
-          <li>[Caso o iniciativa intraemprendedora 2]</li>
-          <li>[Caso o iniciativa intraemprendedora 3]</li>
+      <div class="info-block">
+        <div class="block-label">C — Barreras</div>
+        <h4>Barreras para Intraemprender</h4>
+        <ul class="item-list">
+          <li><strong>Regulaciones Estrictas:</strong> Operar bajo la Superintendencia del Mercado de Valores (SMV) implica un entorno donde cualquier innovación en el manejo de fondos debe pasar filtros de <em>compliance</em> complejos.</li>
+          <li><strong>Cultura tradicional arraigada:</strong> El hábito de más de cuatro décadas de concretar contratos en físico.</li>
         </ul>
       </div>
     </div>
 
-  </div><!-- /content-area -->
+    <div class="full-block fade-in">
+      <div class="block-label">D — Modelo de Intraemprendimiento</div>
+      <h4>Modelo Propuesto: Células Ágiles (Agile Cross-functional Teams)</h4>
+      <p>Para Pandero se identifica el modelo de <strong>Equipos Transversales o Células Ágiles</strong> enfocado en Transformación Digital. En lugar de crear un <em>spin-off</em> externo, Pandero empodera a grupos multidisciplinarios (comerciales, reguladores y programadores) otorgándoles autonomía metodológica ("desarrollo ágil") para modernizar el producto clave desde las entrañas de la organización.</p>
+    </div>
 
-  <!-- FOOTER -->
-  <footer>
-    <p>Análisis Empresarial — Intraemprendimiento &amp; Estrategia Corporativa</p>
-    <div class="footer-mark">H · P</div>
-    <p>[Institución / Integrantes / Año]</p>
-  </footer>
+    <div class="quote-block fade-in">
+      <p>"Pandero S.A. continua innovando en la creación de soluciones de negocio con mayor simplicidad, independencia en la gestión y empleo de nuevas plataformas ágiles."</p>
+    </div>
 
-  <script>
-    // ── Company toggle
-    function showCompany(id) {
-      document.querySelectorAll('.company-section').forEach(s => s.classList.remove('visible'));
-      document.querySelectorAll('.company-card').forEach(c => c.classList.remove('active'));
+    <div class="full-block fade-in">
+      <div class="block-label">E — Experiencia Intraemprendedora</div>
+      <h4>Iniciativas y Casos Destacados: Ecosistema 100% Digital</h4>
+      <p>El caso intraemprendedor más potente ha sido liderado por la Gerencia de Tecnología e Innovación de Pandero, donde los propios empleados visualizaron y ejecutaron la transformación de un negocio intensivo en papel hacia un ecosistema escalable:</p>
+      <ul class="item-list" style="margin-top:1.5rem">
+        <li><strong>Contratación y Seguimiento Mobile:</strong> Intraemprendedores del área digital impulsaron el paso "de papel a lo digital", construyendo plataformas donde el cliente peruano puede hoy contratar, gestionar y ver asambleas completamente desde el celular.</li>
+        <li><strong>Automatización In-house del proceso comercial:</strong> Equipos internos crearon soluciones digitales ágiles que permiten que la compra de certificados se haga en minutos. Esta innovación interna no solo redujo la burocracia, sino que hizo el producto "más seguro, confiable y sostenible" ante los ojos del asociado.</li>
+      </ul>
+    </div>
 
-      const section = document.getElementById(id);
-      const card = document.querySelector(`.company-card.${id}`);
+  </div><section id="fuentes" class="sources-section fade-in">
+    <div class="sources-header">
+      <h2><span>Referencias</span>Bibliografía y<br>Fuentes de Datos</h2>
+    </div>
+    <div class="sources-grid">
+      <div class="source-block">
+        <h5>Marco Teórico</h5>
+        <div class="source-item">
+          <p><strong>Pinchot, G. (1985).</strong> <em>Intrapreneuring: Why You Don't Have to Leave the Corporation to Become an Entrepreneur</em>. Harper & Row.</p>
+        </div>
+        <div class="source-item">
+          <p><strong>Antoncic, B., & Hisrich, R. D. (2003).</strong> Clarifying the intrapreneurship concept. <em>Journal of Small Business and Enterprise Development</em>.</p>
+        </div>
+      </div>
+      <div class="source-block">
+        <h5>Casos Corporativos (Investigación)</h5>
+        <div class="source-item">
+          <p><strong>Visit Fairfax (2017).</strong> <em>Hilton Launches Innovation Gallery</em>. Recuperado de los reportes oficiales corporativos sobre la inauguración del laboratorio de innovación en Virginia.</p>
+        </div>
+        <div class="source-item">
+          <p><strong>Todo Motor Perú (2020).</strong> <em>Asociados de Pandero S.A realizan compra de certificados en minutos con soluciones digitales</em>. Entrevista y datos sobre gestión tecnológica intraemprendedora liderada por Frank Jarrín.</p>
+        </div>
+        <div class="source-item">
+          <p><strong>Repositorio ESAN (2019).</strong> <em>Análisis de viabilidad del negocio de financiamiento colaborativo</em>. Datos duros sobre la supervisión SMV y participación en el mercado de Pandero Perú.</p>
+        </div>
+        <div class="source-item">
+          <p><strong>Pandero S.A. (2026).</strong> <em>Propuesta de valor y acceso digital</em>. Portal corporativo de Pandero (pandero.com.pe).</p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-      if (section) section.classList.add('visible');
-      if (card) card.classList.add('active');
+</div><footer>
+  <p>Análisis Empresarial — Intraemprendimiento &amp; Estrategia Corporativa</p>
+  <div class="footer-mark">H · P</div>
+  <p>© 2026</p>
+</footer>
 
-      // Scroll to section
-      setTimeout(() => {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }, 100);
+<script>
+  function showCompany(id) {
+    document.querySelectorAll('.company-section').forEach(s => s.classList.remove('visible'));
+    document.querySelectorAll('.company-card').forEach(c => c.classList.remove('active'));
+    const section = document.getElementById(id);
+    const card = document.querySelector('.company-card.' + id);
+    if (section) section.classList.add('visible');
+    if (card) card.classList.add('active');
+    setTimeout(() => { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 100);
+    triggerFadeIns();
+  }
 
-      // Trigger fade-ins
-      triggerFadeIns();
-    }
+  function triggerFadeIns() {
+    setTimeout(() => {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('visible'); observer.unobserve(e.target); }
+        });
+      }, { threshold: 0.08 });
+      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+    }, 200);
+  }
 
-    // ── Intersection Observer for fade-in
-    function triggerFadeIns() {
-      setTimeout(() => {
-        const observer = new IntersectionObserver((entries) => {
-          entries.forEach(e => {
-            if (e.isIntersecting) {
-              e.target.classList.add('visible');
-              observer.unobserve(e.target);
-            }
-          });
-        }, { threshold: 0.1 });
-
-        document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-      }, 200);
-    }
-
-    // ── Init observer on load
-    document.addEventListener('DOMContentLoaded', () => {
-      triggerFadeIns();
-
-      // Hero elements already animated via CSS
-      // Auto-show Hilton by default
-      showCompany('hilton');
-    });
-  </script>
+  document.addEventListener('DOMContentLoaded', () => {
+    triggerFadeIns();
+    showCompany('hilton');
+  });
+</script>
 </body>
 </html>
